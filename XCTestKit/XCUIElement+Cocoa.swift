@@ -29,7 +29,7 @@ extension XCUIElement {
     
     public func saveDocument(to url: URL? = nil, filename: String? = nil, pathExtension: String? = nil, assertDefaultFileName: String? = nil) -> URL {
         self.typeKey("s", modifierFlags: .command)
-        self.assertNoErrorMessages()
+        self.assertNoErrorAlert()
         
         if let assertDefaultFileName = assertDefaultFileName {
             self.typeKey("c", modifierFlags: .command)
