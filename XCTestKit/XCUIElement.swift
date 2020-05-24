@@ -30,7 +30,7 @@ extension XCUIElement {
     }
     
     public func dismissPopover() {
-        self.otherElements["dismiss popup"].tap()
+        self.otherElements["PopoverDismissRegion"].tap()
     }
 }
 #endif
