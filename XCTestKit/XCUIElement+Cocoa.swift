@@ -12,7 +12,22 @@ import FoundationKit
 import XCTest
 
 extension XCUIElement {
-    func saveDocument(to url: URL? = nil, filpathExtension: String? = nil, assertDefaultFileName: String? = nil) {
+    public func openDocuments(at url: URL, selectDirectoryContents: Bool = false) {
+        let url = url.resolvingSymlinksInPath().absoluteURL
+        self.typeKey("o", modifierFlags: .command)
+        self.typeKey("g", modifierFlags: [.command, .shift])
+        self.typeText(url.path)
+        self.typeText(XCUIKeyboardKey.enter.rawValue)
+        
+        if selectDirectoryContents {
+            self.typeText(XCUIKeyboardKey.rightArrow.rawValue)
+            self.typeKey("a", modifierFlags: [.command])
+        }
+        
+        self.typeText(XCUIKeyboardKey.enter.rawValue)
+    }
+    
+    public func saveDocument(to url: URL? = nil, filename: String? = nil, pathExtension: String? = nil, assertDefaultFileName: String? = nil) -> URL {
         self.typeKey("s", modifierFlags: .command)
         self.assertNoErrorMessages()
         
@@ -25,13 +40,14 @@ extension XCUIElement {
             #endif
         }
         
-        let temporaryOutputURL = FileManager.default.temporaryRandomFileURL(
-            pathExtension: "pdf")
+        var outputURL = url ?? FileManager.default.temporaryRandomFileURL(
+            filename: filename, pathExtension: pathExtension)
+        outputURL = outputURL.resolvingSymlinksInPath().absoluteURL
         self.typeKey("g", modifierFlags: [.command, .shift])
-        self.typeText(temporaryOutputURL.path)
+        self.typeText(outputURL.path)
         self.typeKey(XCUIKeyboardKey.enter.rawValue, modifierFlags: [])
         self.typeKey(XCUIKeyboardKey.enter.rawValue, modifierFlags: [])
-
+        return outputURL
     }
 }
 #endif
