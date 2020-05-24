@@ -22,9 +22,15 @@ extension XCUIElement {
     public func assertNoErrorAlert() {
         XCTAssertEqual(self.staticTexts.matching(identifier: "Error").count, 0)
     }
-    
+}
+
+extension XCUIElement {
     public func dismissAlert() {
         self.buttons["OK"].firstMatch.tap()
+    }
+    
+    public func dismissPopover() {
+        self.otherElements["dismiss popup"].tap()
     }
 }
 #endif
