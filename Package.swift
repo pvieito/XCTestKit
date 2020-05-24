@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "XCTestKit",
+    platforms: [
+        .macOS(.v10_11)
+    ],
     products: [
         .library(
             name: "XCTestKit",
@@ -16,7 +19,7 @@ let package = Package(
     targets: [
         .target(
             name: "XCTestKit",
-            dependencies: ["FoudationKit"],
+            dependencies: ["FoundationKit"],
             path: "XCTestKit"
         )
     ]
