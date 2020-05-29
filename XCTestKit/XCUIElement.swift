@@ -33,4 +33,15 @@ extension XCUIElement {
         self.otherElements["PopoverDismissRegion"].tap()
     }
 }
+
+extension XCUIElement {
+    private static let notExistancePredicate = NSPredicate(format: "exists == FALSE")
+
+    @discardableResult
+    public func waitForNotExistence(timeout: TimeInterval) -> XCTWaiter.Result {
+        let notExistanceExpectation = XCTNSPredicateExpectation(
+            predicate: Self.notExistancePredicate, object: self)
+        return XCTWaiter.wait(for: [notExistanceExpectation], timeout: timeout)
+    }
+}
 #endif
