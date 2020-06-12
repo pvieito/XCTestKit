@@ -11,6 +11,7 @@
 		AA6B720E247AB87700567D68 /* XCUIElement+Cocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B720B247AB87700567D68 /* XCUIElement+Cocoa.swift */; };
 		AA6B7210247AB9A200567D68 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6B720F247AB9A200567D68 /* XCTest.framework */; };
 		AA6D635823737D1A0008EE7E /* FoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6D635123737D120008EE7E /* FoundationKit.framework */; };
+		AAC9EB57249406A4006D54DE /* XCUIApplication+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9EB56249406A4006D54DE /* XCUIApplication+State.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		AA6B720F247AB9A200567D68 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		AA6D634A23737D120008EE7E /* FoundationKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FoundationKit.xcodeproj; path = ../FoundationKit/FoundationKit.xcodeproj; sourceTree = "<group>"; };
 		AAAB3F6D235E4A810013FE56 /* XCTestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XCTestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC9EB56249406A4006D54DE /* XCUIApplication+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+State.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				AA6B720A247AB87700567D68 /* XCUIElement.swift */,
 				AA6B720B247AB87700567D68 /* XCUIElement+Cocoa.swift */,
+				AAC9EB56249406A4006D54DE /* XCUIApplication+State.swift */,
 				AA6B7209247AB87700567D68 /* Info.plist */,
 			);
 			path = XCTestKit;
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6B720D247AB87700567D68 /* XCUIElement.swift in Sources */,
+				AAC9EB57249406A4006D54DE /* XCUIApplication+State.swift in Sources */,
 				AA6B720E247AB87700567D68 /* XCUIElement+Cocoa.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
