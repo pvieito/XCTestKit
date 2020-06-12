@@ -6,6 +6,7 @@
 //  Copyright © 2020 Pedro José Pereira Vieito. All rights reserved.
 //
 
+#if canImport(Darwin)
 import Foundation
 import XCTest
 
@@ -19,3 +20,4 @@ extension XCUIApplication.State {
         return Self.runningStates.contains(self)
     }
 }
+#endif
