@@ -21,9 +21,5 @@ jobs:
           repository: pvieito/FoundationKit
           ref: refs/heads/master
           path: FoundationKit
-      - name: Install Swift
-        uses: YOCKOW/Action-setup-swift@master
-        with:
-          swift-version: '5.2'
       - name: Build
         run: swift build --package-path XCTestKit
