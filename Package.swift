@@ -5,7 +5,8 @@ import PackageDescription
 let package = Package(
     name: "XCTestKit",
     platforms: [
-        .macOS(.v10_11)
+        .macOS(.v10_11),
+        .iOS(.v12),
     ],
     products: [
         .library(
@@ -14,7 +15,7 @@ let package = Package(
         )
     ],
     dependencies:  [
-        .package(path: "../FoundationKit"),
+        .package(url: "git@github.com:pvieito/FoundationKit.git", .branch("master")),
     ],
     targets: [
         .target(
