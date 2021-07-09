@@ -10,16 +10,14 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          # - macos-latest
+          - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v1
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          path: XCTestKit
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - uses: actions/checkout@v1
-        with:
-          repository: pvieito/FoundationKit
-          ref: refs/heads/master
-          path: FoundationKit
-      - name: Build
-        run: swift build --package-path XCTestKit
+      - name: Test
+        run: swift test
