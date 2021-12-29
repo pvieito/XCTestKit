@@ -11,8 +11,12 @@ import Foundation
 import XCTest
 
 extension XCUIElement {
+    private static let alertExistenceTimeout: TimeInterval = 3.0
+    
     public func assertErrorAlert(dismiss: Bool = true) {
-        XCTAssertEqual(self.staticTexts.matching(identifier: "Error").count, 1)
+        let errorMessages = self.staticTexts.matching(identifier: "Error")
+        let _ = errorMessages.firstMatch.waitForExistence(timeout: Self.alertExistenceTimeout)
+        XCTAssertEqual(errorMessages.count, 1)
         
         if dismiss {
             self.dismissAlert()
@@ -20,7 +24,9 @@ extension XCUIElement {
     }
     
     public func assertNoErrorAlert() {
-        XCTAssertEqual(self.staticTexts.matching(identifier: "Error").count, 0)
+        let errorMessages = self.staticTexts.matching(identifier: "Error")
+        errorMessages.firstMatch.waitForNotExistence(timeout: Self.alertExistenceTimeout)
+        XCTAssertEqual(errorMessages.count, 0)
     }
 }
 
@@ -35,13 +41,13 @@ extension XCUIElement {
 }
 
 extension XCUIElement {
-    private static let notExistancePredicate = NSPredicate(format: "exists == FALSE")
+    private static let notExistencePredicate = NSPredicate(format: "exists == FALSE")
 
     @discardableResult
     public func waitForNotExistence(timeout: TimeInterval) -> XCTWaiter.Result {
-        let notExistanceExpectation = XCTNSPredicateExpectation(
-            predicate: Self.notExistancePredicate, object: self)
-        return XCTWaiter.wait(for: [notExistanceExpectation], timeout: timeout)
+        let notExistenceExpectation = XCTNSPredicateExpectation(
+            predicate: Self.notExistencePredicate, object: self)
+        return XCTWaiter.wait(for: [notExistenceExpectation], timeout: timeout)
     }
 }
 #endif
